@@ -72,6 +72,7 @@ static const char *volumeMuteToggle[]  = { "pamixer", "-t", NULL };
 static const char *flameshotScreenshot[]  = { "flameshot", "gui", NULL };
 static const char *screenshot[]  = { "screenshot" };
 static const char *standby[]  = { "systemctl", "suspend" };
+static const char *xsecurelock[]  = { "xsecurelock"};
 
 
 static Key keys[] = {
@@ -81,6 +82,7 @@ static Key keys[] = {
 	{ 0,                            XF86XK_AudioRaiseVolume,   spawn,          {.v = volumeIncrease } },
 	{ 0,                            XF86XK_AudioLowerVolume,   spawn,          {.v = volumeDecrease } },
 	{ 0,                            XF86XK_AudioMute,          spawn,          {.v = volumeMuteToggle } },
+	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = xsecurelock } },
 	{ MODKEY|ShiftMask,             XK_End,    spawn,          {.v = standby } },
 	{ MODKEY,                       XK_Print,  spawn,          {.v = flameshotScreenshot } },
 	{ 0,                            XK_Print,  spawn,          {.v = screenshot } },
