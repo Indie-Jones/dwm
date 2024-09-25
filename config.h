@@ -70,8 +70,9 @@ static const char *volumeIncrease[]  = { "pamixer", "-i", "2", NULL };
 static const char *volumeDecrease[]  = { "pamixer", "-d", "2", NULL };
 static const char *volumeMuteToggle[]  = { "pamixer", "-t", NULL };
 static const char *flameshotScreenshot[]  = { "flameshot", "gui", NULL };
+static const char *ksnipScreenshot[]  = { "ksnip", "-r", "-c", NULL };
 static const char *screenshot[]  = { "screenshot" };
-static const char *standby[]  = { "systemctl", "suspend" };
+static const char *standby[]  = { "systemctl", "suspend", NULL };
 static const char *xsecurelock[]  = { "xsecurelock"};
 
 
@@ -83,8 +84,8 @@ static Key keys[] = {
 	{ 0,                            XF86XK_AudioLowerVolume,   spawn,          {.v = volumeDecrease } },
 	{ 0,                            XF86XK_AudioMute,          spawn,          {.v = volumeMuteToggle } },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = xsecurelock } },
-	{ MODKEY|ShiftMask,             XK_End,    spawn,          {.v = standby } },
-	{ MODKEY,                       XK_Print,  spawn,          {.v = flameshotScreenshot } },
+	{ MODKEY|ShiftMask,             XK_s,    spawn,          {.v = standby } },
+	{ MODKEY,                       XK_Print,  spawn,          {.v = ksnipScreenshot } },
 	{ 0,                            XK_Print,  spawn,          {.v = screenshot } },
   	{ MODKEY,                       XK_F1,     spawn,          SHCMD("setxkbmap us") },
   	{ MODKEY,                       XK_F2,     spawn,          SHCMD("setxkbmap de") },
