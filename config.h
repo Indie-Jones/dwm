@@ -71,9 +71,10 @@ static const char *volumeDecrease[]  = { "pamixer", "-d", "2", NULL };
 static const char *volumeMuteToggle[]  = { "pamixer", "-t", NULL };
 static const char *flameshotScreenshot[]  = { "flameshot", "gui", NULL };
 static const char *ksnipScreenshot[]  = { "ksnip", "-r", "-c", NULL };
-static const char *screenshot[]  = { "screenshot" };
+static const char *screenshot[]  = { "screenshot", NULL };
 static const char *standby[]  = { "systemctl", "suspend", NULL };
-static const char *xsecurelock[]  = { "xsecurelock"};
+static const char *xsecurelock[]  = { "xsecurelock", NULL };
+static const char *toggle_ipv6_nmcli[]  = { "toggle_ipv6_nmcli", NULL };
 
 
 static Key keys[] = {
@@ -84,6 +85,7 @@ static Key keys[] = {
 	{ 0,                            XF86XK_AudioLowerVolume,   spawn,          {.v = volumeDecrease } },
 	{ 0,                            XF86XK_AudioMute,          spawn,          {.v = volumeMuteToggle } },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = xsecurelock } },
+	{ MODKEY|ShiftMask,             XK_i,      spawn,          {.v = toggle_ipv6_nmcli } },
 	{ MODKEY|ShiftMask,             XK_s,    spawn,          {.v = standby } },
 	{ MODKEY,                       XK_Print,  spawn,          {.v = ksnipScreenshot } },
 	{ 0,                            XK_Print,  spawn,          {.v = screenshot } },
