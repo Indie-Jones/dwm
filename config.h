@@ -1,5 +1,3 @@
-/* See LICENSE file for copyright and license details. */
-
 #include <X11/XF86keysym.h>
 
 /* appearance */
@@ -12,8 +10,8 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10", "JoyPixels:pixelsize=10:antialias=true:autohint=true" };
-static const char dmenufont[]       = "monospace:size=10";
+static const char *fonts[]          = { "monospace:size=11", "JoyPixels:pixelsize=11:antialias=true:autohint=true" };
+static const char dmenufont[]       = "monospace:size=11";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -69,12 +67,14 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *volumeIncrease[]  = { "pamixer", "-i", "2", NULL };
 static const char *volumeDecrease[]  = { "pamixer", "-d", "2", NULL };
 static const char *volumeMuteToggle[]  = { "pamixer", "-t", NULL };
-static const char *flameshotScreenshot[]  = { "flameshot", "gui", NULL };
 static const char *ksnipScreenshot[]  = { "ksnip", "-r", "-c", NULL };
+static const char *flameshot[]  = { "flameshot", "gui", NULL };
 static const char *screenshot[]  = { "screenshot", NULL };
 static const char *standby[]  = { "systemctl", "suspend", NULL };
+static const char *hibernate[]  = { "systemctl", "hibernate", NULL };
 static const char *xsecurelock[]  = { "xsecurelock", NULL };
 static const char *toggle_ipv6_nmcli[]  = { "toggle_ipv6_nmcli", NULL };
+static const char *toggle_display[]  = { "toggle_display", NULL };
 
 
 static Key keys[] = {
@@ -86,11 +86,13 @@ static Key keys[] = {
 	{ 0,                            XF86XK_AudioMute,          spawn,          {.v = volumeMuteToggle } },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = xsecurelock } },
 	{ MODKEY|ShiftMask,             XK_i,      spawn,          {.v = toggle_ipv6_nmcli } },
-	{ MODKEY|ShiftMask,             XK_s,    spawn,          {.v = standby } },
-	{ MODKEY,                       XK_Print,  spawn,          {.v = ksnipScreenshot } },
+	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = toggle_display } },
+	{ MODKEY|ControlMask|ShiftMask, XK_s,      spawn,          {.v = standby } },
+	{ MODKEY|ControlMask|ShiftMask, XK_h,      spawn,          {.v = hibernate } },
+	{ MODKEY,                       XK_Print,  spawn,          {.v = flameshot } },
 	{ 0,                            XK_Print,  spawn,          {.v = screenshot } },
-  	{ MODKEY,                       XK_F1,     spawn,          SHCMD("setxkbmap us") },
-  	{ MODKEY,                       XK_F2,     spawn,          SHCMD("setxkbmap de") },
+  { MODKEY,                       XK_F1,     spawn,          SHCMD("setxkbmap us") },
+  { MODKEY,                       XK_F2,     spawn,          SHCMD("setxkbmap de") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
