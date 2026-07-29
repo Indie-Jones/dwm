@@ -89,7 +89,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = toggle_display } },
 	{ MODKEY|ControlMask|ShiftMask, XK_s,      spawn,          {.v = standby } },
 	{ MODKEY|ControlMask|ShiftMask, XK_h,      spawn,          {.v = hibernate } },
-	{ MODKEY,                       XK_Print,  spawn,          {.v = flameshot } },
+	{ MODKEY,                       XK_Print,  spawn,          {.v = ksnipScreenshot } },
 	{ 0,                            XK_Print,  spawn,          {.v = screenshot } },
   { MODKEY,                       XK_F1,     spawn,          SHCMD("setxkbmap us") },
   { MODKEY,                       XK_F2,     spawn,          SHCMD("setxkbmap de") },
