@@ -10,8 +10,8 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=11", "JoyPixels:pixelsize=11:antialias=true:autohint=true" };
-static const char dmenufont[]       = "monospace:size=11";
+static const char *fonts[]          = { "monospace:size=12", "JoyPixels:pixelsize=12:antialias=true:autohint=true" };
+static const char dmenufont[]       = "monospace:size=12";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -68,13 +68,14 @@ static const char *volumeIncrease[]  = { "pamixer", "-i", "2", NULL };
 static const char *volumeDecrease[]  = { "pamixer", "-d", "2", NULL };
 static const char *volumeMuteToggle[]  = { "pamixer", "-t", NULL };
 static const char *ksnipScreenshot[]  = { "ksnip", "-r", "-c", NULL };
-//static const char *flameshot[]  = { "flameshot", "gui", NULL };
 static const char *screenshot[]  = { "screenshot", NULL };
 static const char *standby[]  = { "systemctl", "suspend", NULL };
 static const char *hibernate[]  = { "systemctl", "hibernate", NULL };
-static const char *xsecurelock[]  = { "xsecurelock", NULL };
+static const char *lockscreen[]  = { "lock-screen", NULL };
 static const char *toggle_ipv6_nmcli[]  = { "toggle_ipv6_nmcli", NULL };
 static const char *toggle_display[]  = { "toggle_display", NULL };
+static const char *brightnessIncrease[] = { "brightnessctl", "s", "2%+" };
+static const char *brightnessDecrease[] = { "brightnessctl", "s", "2%-" };
 
 
 static Key keys[] = {
@@ -84,7 +85,9 @@ static Key keys[] = {
 	{ 0,                            XF86XK_AudioRaiseVolume,   spawn,          {.v = volumeIncrease } },
 	{ 0,                            XF86XK_AudioLowerVolume,   spawn,          {.v = volumeDecrease } },
 	{ 0,                            XF86XK_AudioMute,          spawn,          {.v = volumeMuteToggle } },
-	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = xsecurelock } },
+	{ 0,                            XF86XK_MonBrightnessUp,    spawn,          {.v = brightnessIncrease } },
+	{ 0,                            XF86XK_MonBrightnessDown,  spawn,          {.v = brightnessDecrease } },
+	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lockscreen } },
 	{ MODKEY|ShiftMask,             XK_i,      spawn,          {.v = toggle_ipv6_nmcli } },
 	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = toggle_display } },
 	{ MODKEY|ControlMask|ShiftMask, XK_s,      spawn,          {.v = standby } },
